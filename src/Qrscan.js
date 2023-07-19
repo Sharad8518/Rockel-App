@@ -63,7 +63,7 @@ export default function Qrscan({ navigation }) {
 
   const translateY = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, Dimensions.get('window').height - 620],
+    outputRange: [0, Dimensions.get('window').height - 610],
     extrapolate: 'clamp'
   })
 
