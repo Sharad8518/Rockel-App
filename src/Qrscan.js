@@ -124,17 +124,17 @@ export default function Qrscan({ navigation }) {
       customMarker={
         <View style={styles.container}>
           <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-            <View style={{ width: 40, height: 40, borderLeftColor: "#E74C3C", borderLeftWidth: 2, borderTopColor: "#E74C3C", borderTopWidth: 2,  borderRadius: 5 }}>
+            <View style={{ width: 40, height: 40, borderLeftColor: "#E74C3C", borderLeftWidth: 2, borderTopColor: "#E74C3C", borderTopWidth: 2,   }}>
             </View>
-            <View style={{ width: 40, height: 40, borderRightColor: "#E74C3C", borderRightWidth: 2, borderTopColor: "#E74C3C", borderTopWidth: 2,  borderRadius: 5 }}>
+            <View style={{ width: 40, height: 40, borderRightColor: "#E74C3C", borderRightWidth: 2, borderTopColor: "#E74C3C", borderTopWidth: 2,}}>
             </View>
 
           </View>
           <View style={{ flexDirection: "row", justifyContent: "space-between", position: "absolute", bottom: 0 }}>
             <View style={{ width: 200, flexDirection: "row", justifyContent: "space-between" }}>
-              <View style={{ width: 40, height: 40, borderBottomColor: "#E74C3C", borderBottomWidth: 2, borderLeftColor: "#E74C3C", borderLeftWidth: 2, borderRadius: 5 }}>
+              <View style={{ width: 40, height: 40, borderBottomColor: "#E74C3C", borderBottomWidth: 2, borderLeftColor: "#E74C3C", borderLeftWidth: 2, }}>
               </View>
-              <View style={{ width: 40, height: 40, borderBottomColor: "#E74C3C", borderBottomWidth: 2, borderRightColor: "#E74C3C", borderRightWidth: 2,   borderRadius: 5 }}>
+              <View style={{ width: 40, height: 40, borderBottomColor: "#E74C3C", borderBottomWidth: 2, borderRightColor: "#E74C3C", borderRightWidth: 2,   }}>
               </View>
             </View>
           </View>
