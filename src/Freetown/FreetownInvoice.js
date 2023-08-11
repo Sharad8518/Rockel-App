@@ -3,8 +3,7 @@ import React from 'react'
 import Feather from 'react-native-vector-icons/Feather';
 import { Card } from 'react-native-paper';
 
-
-export default function Invoice({navigation}) {
+export default function FreetownInvoice({navigation}) {
   return (
     <View style={{height:"100%",backgroundColor:"#fff"}}>
         <ScrollView>
@@ -59,7 +58,11 @@ export default function Invoice({navigation}) {
                 <Text style={{fontSize:11,marginLeft:10,fontFamily:"Poppins-SemiBold",color:"#F1C40F"}}>Wait For Pickup</Text>
                 <Text style={{marginLeft:10,color:"#34495E",fontSize:8,marginTop:0,fontFamily:"Poppins-Medium"}}>06 Jul 2023, 10:50AM</Text>
                 <View style={{flexDirection:"column",width:"60%",justifyContent:"center",alignItems:"center",backgroundColor:"#1ABC9C",marginLeft:10,height:25,borderRadius:50,marginTop:1}}>
+                    <TouchableOpacity onPress={()=>navigation.navigate("InvoiceDetail")}>
+                <View style={{width:"70%",flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
                    <Text style={{color:"#fff",fontSize:12}}>View Detail</Text>
+                   </View>
+                   </TouchableOpacity>
                     </View>
                 </View>
 
@@ -90,8 +93,12 @@ export default function Invoice({navigation}) {
                 <Text style={{marginLeft:10,color:"#34495E",fontSize:12,marginTop:7,fontFamily:"Poppins-SemiBold"}}>06 Jul 2023, 10:50AM</Text>
                 <Text style={{fontSize:11,marginLeft:10,fontFamily:"Poppins-SemiBold",color:"#2ECC71"}}>Deliverd</Text>
                 <Text style={{marginLeft:10,color:"#34495E",fontSize:8,marginTop:0,fontFamily:"Poppins-Medium"}}>06 Jul 2023, 10:50AM</Text>
-                <View style={{flexDirection:"column",width:"60%",justifyContent:"center",alignItems:"center",backgroundColor:"#1ABC9C",marginLeft:10,height:25,borderRadius:50,marginTop:1}}>
+                <View style={{flexDirection:"column",width:"60%",justifyContent:"center",alignItems:"center",backgroundColor:"#1ABC9C",height:25,borderRadius:50,marginTop:1,}}>
+                <TouchableOpacity onPress={()=>navigation.navigate("InvoiceDetail")}>
+                    <View style={{width:"70%",flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
                    <Text style={{color:"#fff",fontSize:12}}>View Detail</Text>
+                   </View>
+                   </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -99,17 +106,7 @@ export default function Invoice({navigation}) {
      </View>
      </ScrollView>
 
-     <View style={{position:"absolute",bottom:0,height:60,width:"100%"}}>
-    <View style={{width:"100%",flexDirection:"row",justifyContent:"flex-end"}}>
-    <TouchableOpacity onPress={()=>navigation.navigate("AddInvoice")}>
-      <View style={{backgroundColor:"#E74C3C",width:50,height:50,marginRight:10,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:50}} >
-       <Feather name="plus" size={25} color="#fff"/>
-      </View>
-      </TouchableOpacity>
-      
-
-    </View>
-    </View>
+   
 
           
 

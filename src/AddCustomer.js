@@ -141,6 +141,7 @@ export default function AddCustomer() {
 
     
     <View style={{width:"90%",marginTop:10}}>
+      <Text style={{marginBottom:5,fontFamily:"Poppins-SemiBold",color:"#000"}}>Area</Text>
     <DropDownPicker
       open={open}
       value={value}
@@ -148,6 +149,7 @@ export default function AddCustomer() {
       setOpen={setOpen}
       setValue={setValue}
       setItems={setItems}
+      placeholder="Select Area"
     />
     </View>
 

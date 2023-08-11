@@ -119,6 +119,7 @@ const { colors } = theme;
     </View>
 
     <View style={{width:"90%",marginTop:12}}>
+      <Text style={{marginBottom:5,fontFamily:"Poppins-SemiBold",color:"#000"}}>Country</Text>
     <DropDownPicker
       open={open}
       value={value}
@@ -126,6 +127,7 @@ const { colors } = theme;
       setOpen={setOpen}
       setValue={setValue}
       setItems={setItems}
+      placeholder="Select Country"
     />
     </View>
 

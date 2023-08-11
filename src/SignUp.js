@@ -41,6 +41,12 @@ export default function SignUp({navigation}) {
       </View>
     </View>
   
+    <View style={{flexDirection:"row",justifyContent:"center",alignItems:"center",marginTop:12}}>
+      <TouchableOpacity onPress={()=>navigation.navigate("FreetownLogin")}>
+      <Text  style={{fontFamily:"Poppins-SemiBold",color:"#3498DB"}}>Freetown (London) Login </Text>
+      </TouchableOpacity>
+    </View>
+
     </ScrollView>
   </View>
   )
