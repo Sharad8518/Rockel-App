@@ -43,6 +43,7 @@ export default function Qrscan({ navigation }) {
   if (goNext) {
     navigation.navigate('Successfull', ({ result: result }));
   }
+  
   const animatedValue = useRef(new Animated.Value(0)).current;
   const [isTop, setIsTop] = useState(true);
 

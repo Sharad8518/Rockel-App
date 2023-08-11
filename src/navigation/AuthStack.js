@@ -12,7 +12,8 @@ import Profile from '../Profile'
 import Successfull from '../Successfull'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import AddCustomer from '../AddCustomer'
+import AddInvoice from '../AddInvoice'
 
 
 const Stack =  createNativeStackNavigator();
@@ -32,6 +33,8 @@ export default function AuthStack() {
   <Stack.Screen name="Qrscan" component={Qrscan} /> 
   <Stack.Screen name="Profile" component={Profile} /> 
   <Stack.Screen name="Successfull" component={Successfull} /> 
+  <Stack.Screen name="AddCustomer" component={AddCustomer} /> 
+  <Stack.Screen name="AddInvoice" component={AddInvoice} /> 
 </Stack.Navigator>
 </NavigationContainer>
   )

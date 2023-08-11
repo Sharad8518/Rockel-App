@@ -1,6 +1,7 @@
 import { View, Text,StatusBar,TouchableOpacity, ScrollView,Image } from 'react-native'
 import React from 'react'
 import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Card } from 'react-native-paper';
 import addCus from "../assets/Image/addCus.png"
 import allCus from "../assets/Image/allCus.png"
@@ -25,31 +26,204 @@ export default function Customer({navigation}) {
 
   <View style={{flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
 
-<View style={{flexDirection:"row",justifyContent:"space-between",width:"95%"}}>
-   <View style={{width:"50%",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:10,marginBottom:5}}>
-   <Card style={{width:"80%" , height:120,flexDirection:"row",justifyContent:"center",alignItems:"center",elevation:5,borderRadius:10}}>
-       <TouchableOpacity>
-       <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",width:"100%"}}>
-       <Image source={addCus}/>
-       </View>
-       </TouchableOpacity>
-   </Card>
-   <Text style={{marginTop:10,fontFamily:"Poppins-SemiBold",color:"#000"}}>Add Customer</Text>
-   </View>
-   <View style={{width:"50%",justifyContent:"center",alignItems:"center",flexDirection:"column",marginRight:0,marginTop:10,marginBottom:5}}>
-   <Card style={{width:"80%" ,height:120,flexDirection:"row",justifyContent:"center",alignItems:"center",elevation:5,borderRadius:10}}>
-   <TouchableOpacity>
-   <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",width:"100%"}}>
-   <Image source={allCus}  />
-   </View>
-   </TouchableOpacity>
-   </Card>
-   <Text style={{marginTop:10,fontFamily:"Poppins-SemiBold",color:"#000"}}>All Customer</Text>
-   </View>
-</View>
+    <Card style={{width:"95%",height:100,marginTop:10,marginBottom:5,elevation:3,borderRadius:15}}>
+      <View style={{flexDirection:"row",justifyContent:"space-between",height:"100%"}}>
+        <View style={{width:"70%",height:"100%",flexDirection:"column"}}>
+          <View style={{width:"100%",marginTop:10,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Name : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>Laurie H. Smith </Text>
+          </View>
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Email : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>sharadkum9@gmail.com </Text>
+          </View>
+
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Phone : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>315-278-5173</Text>
+          </View>
+        </View>
+        <View style={{width:"30%",height:"100%",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+          <View style={{width:"90%",backgroundColor:"#66FC87",height:40,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <FontAwesome name="pencil" size={18} color="#fff"/>
+              <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Edit</Text>
+          </View>
+          <View style={{width:"90%",backgroundColor:"#E74C3C",height:40,marginTop:6,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <FontAwesome name="trash-o" size={18} color="#fff"/>
+          <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Delete</Text>
+        </View>
+        </View>
+      </View>
+    </Card>
+
+
+    <Card style={{width:"95%",height:100,marginTop:10,marginBottom:5,elevation:3,borderRadius:15}}>
+      <View style={{flexDirection:"row",justifyContent:"space-between",height:"100%"}}>
+        <View style={{width:"70%",height:"100%",flexDirection:"column"}}>
+          <View style={{width:"100%",marginTop:10,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Name : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>Laurie H. Smith </Text>
+          </View>
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Email : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>sharadkum9@gmail.com </Text>
+          </View>
+
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Phone : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>315-278-5173</Text>
+          </View>
+        </View>
+        <View style={{width:"30%",height:"100%",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+          <View style={{width:"90%",backgroundColor:"#66FC87",height:40,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <FontAwesome name="pencil" size={18} color="#fff"/>
+              <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Edit</Text>
+          </View>
+          <View style={{width:"90%",backgroundColor:"#E74C3C",height:40,marginTop:6,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <FontAwesome name="trash-o" size={18} color="#fff"/>
+          <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Delete</Text>
+        </View>
+        </View>
+      </View>
+    </Card>
+
+    <Card style={{width:"95%",height:100,marginTop:10,marginBottom:5,elevation:3,borderRadius:15}}>
+      <View style={{flexDirection:"row",justifyContent:"space-between",height:"100%"}}>
+        <View style={{width:"70%",height:"100%",flexDirection:"column"}}>
+          <View style={{width:"100%",marginTop:10,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Name : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>Laurie H. Smith </Text>
+          </View>
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Email : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>sharadkum9@gmail.com </Text>
+          </View>
+
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Phone : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>315-278-5173</Text>
+          </View>
+        </View>
+        <View style={{width:"30%",height:"100%",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+          <View style={{width:"90%",backgroundColor:"#66FC87",height:40,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <FontAwesome name="pencil" size={18} color="#fff"/>
+              <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Edit</Text>
+          </View>
+          <View style={{width:"90%",backgroundColor:"#E74C3C",height:40,marginTop:6,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <FontAwesome name="trash-o" size={18} color="#fff"/>
+          <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Delete</Text>
+        </View>
+        </View>
+      </View>
+    </Card>
+
+
+    <Card style={{width:"95%",height:100,marginTop:10,marginBottom:5,elevation:3,borderRadius:15}}>
+      <View style={{flexDirection:"row",justifyContent:"space-between",height:"100%"}}>
+        <View style={{width:"70%",height:"100%",flexDirection:"column"}}>
+          <View style={{width:"100%",marginTop:10,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Name : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>Laurie H. Smith </Text>
+          </View>
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Email : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>sharadkum9@gmail.com </Text>
+          </View>
+
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Phone : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>315-278-5173</Text>
+          </View>
+        </View>
+        <View style={{width:"30%",height:"100%",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+          <View style={{width:"90%",backgroundColor:"#66FC87",height:40,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <FontAwesome name="pencil" size={18} color="#fff"/>
+              <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Edit</Text>
+          </View>
+          <View style={{width:"90%",backgroundColor:"#E74C3C",height:40,marginTop:6,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <FontAwesome name="trash-o" size={18} color="#fff"/>
+          <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Delete</Text>
+        </View>
+        </View>
+      </View>
+    </Card>
+
+
+    <Card style={{width:"95%",height:100,marginTop:10,marginBottom:5,elevation:3,borderRadius:15}}>
+      <View style={{flexDirection:"row",justifyContent:"space-between",height:"100%"}}>
+        <View style={{width:"70%",height:"100%",flexDirection:"column"}}>
+          <View style={{width:"100%",marginTop:10,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Name : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>Laurie H. Smith </Text>
+          </View>
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Email : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>sharadkum9@gmail.com </Text>
+          </View>
+
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Phone : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>315-278-5173</Text>
+          </View>
+        </View>
+        <View style={{width:"30%",height:"100%",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+          <View style={{width:"90%",backgroundColor:"#66FC87",height:40,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <FontAwesome name="pencil" size={18} color="#fff"/>
+              <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Edit</Text>
+          </View>
+          <View style={{width:"90%",backgroundColor:"#E74C3C",height:40,marginTop:6,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <FontAwesome name="trash-o" size={18} color="#fff"/>
+          <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Delete</Text>
+        </View>
+        </View>
+      </View>
+    </Card>
+
+    <Card style={{width:"95%",height:100,marginTop:10,marginBottom:5,elevation:3,borderRadius:15}}>
+      <View style={{flexDirection:"row",justifyContent:"space-between",height:"100%"}}>
+        <View style={{width:"70%",height:"100%",flexDirection:"column"}}>
+          <View style={{width:"100%",marginTop:10,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Name : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>Laurie H. Smith </Text>
+          </View>
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Email : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>sharadkum9@gmail.com </Text>
+          </View>
+
+          <View style={{width:"100%",marginTop:3,marginLeft:15,flexDirection:"row"}}>
+          <Text  style={{color:"#2980B9",fontFamily:"Poppins-SemiBold",fontSize:12}}>Phone : </Text>
+          <Text  style={{color:"#34495E",fontFamily:"Poppins-SemiBold",fontSize:12}} numberOfLines={1}>315-278-5173</Text>
+          </View>
+        </View>
+        <View style={{width:"30%",height:"100%",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+          <View style={{width:"90%",backgroundColor:"#66FC87",height:40,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <FontAwesome name="pencil" size={18} color="#fff"/>
+              <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Edit</Text>
+          </View>
+          <View style={{width:"90%",backgroundColor:"#E74C3C",height:40,marginTop:6,borderRadius:50,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <FontAwesome name="trash-o" size={18} color="#fff"/>
+          <Text style={{marginLeft:5,fontFamily:"Poppins-SemiBold",marginTop:5,color:"#fff",fontSize:12}}>Delete</Text>
+        </View>
+        </View>
+      </View>
+    </Card>
+
 </View>
 </ScrollView>
+   
+   <View style={{position:"absolute",bottom:0,height:60,width:"100%"}}>
+    <View style={{width:"100%",flexDirection:"row",justifyContent:"flex-end"}}>
+    <TouchableOpacity onPress={()=>navigation.navigate("AddCustomer")}>
+      <View style={{backgroundColor:"#E74C3C",width:50,height:50,marginRight:10,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:50}} >
+       <Feather name="plus" size={25} color="#fff"/>
+      </View>
+      </TouchableOpacity>
+      
 
+    </View>
+
+   </View>
     </View>
   )
 }

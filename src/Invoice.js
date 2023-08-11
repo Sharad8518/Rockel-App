@@ -107,6 +107,20 @@ export default function Invoice({navigation}) {
 
      </ScrollView>
 
+     <View style={{position:"absolute",bottom:0,height:60,width:"100%"}}>
+    <View style={{width:"100%",flexDirection:"row",justifyContent:"flex-end"}}>
+    <TouchableOpacity onPress={()=>navigation.navigate("AddInvoice")}>
+      <View style={{backgroundColor:"#E74C3C",width:50,height:50,marginRight:10,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:50}} >
+       <Feather name="plus" size={25} color="#fff"/>
+      </View>
+      </TouchableOpacity>
+      
+
+    </View>
+    </View>
+
+          
+
     </View>
   )
 }
