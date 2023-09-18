@@ -7,6 +7,8 @@ import { Keyboard } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { showMessage } from "react-native-flash-message";
+import { useMutation } from '@apollo/client';
+import { MUTATION_LOGIN_LONDON } from '../Graphql/Mutation';
 
 export const AuthContext = createContext();
 
@@ -54,10 +56,25 @@ export const AuthProvider = ({ children }) => {
     const [breakIf, setBreakIf] = useState(true)
 
     const [splashLoading, setSplashLoading] = useState(false)
+    const[londonStattLogin,{data:userData}] = useMutation(MUTATION_LOGIN_LONDON)
 
-    const loginHandel = async (value) => {
+    console.log("userData",userData)
+
+    const loginHandel = async (username,password) => {
         Keyboard.dismiss();
-        setCheck(value)
+        if(username === "" || password === ""){
+       alert("Username & Password Empty")
+        }else{
+            londonStattLogin({
+            variables:{
+                "userName": `${username}`,
+                "password": `${password}`
+            }
+
+            })
+        }
+        
+       
 
 
         // if (parseInt(InputOTP) === parseInt(getOtp)) {
@@ -76,13 +93,18 @@ export const AuthProvider = ({ children }) => {
         //     });
           
         // }
+
+        
+
+
+
     }
-    // if (userData && breakIf) {
-    //     AsyncStorage.setItem('userId', userData.userOtpLogin.userId);
-    //     AsyncStorage.setItem('userToken', userData.userOtpLogin.usertoken);
-    //     setUserInfo(userData.userOtpLogin.usertoken);
-    //     setBreakIf(false);
-    // }
+    if (userData && breakIf) {
+        AsyncStorage.setItem('userId', userData.londonStattLogin.londonId);
+        AsyncStorage.setItem('userToken', userData.londonStattLogin.londonToken);
+        setUserInfo(userData.londonStattLogin.londonToken);
+        setBreakIf(false);
+    }
 
     const isLoggedIn = async () => {
         try {
@@ -110,20 +132,20 @@ export const AuthProvider = ({ children }) => {
 
 
 
-    // const logOut = async () => {
-    //     await setUserInfo();
-    //     await AsyncStorage.removeItem('userToken');
-    //     await AsyncStorage.removeItem('userId');
-    // }
+    const logOut = async () => {
+        await setUserInfo();
+        await AsyncStorage.removeItem('userToken');
+        await AsyncStorage.removeItem('userId');
+    }
 
     
 
     return (
         <AuthContext.Provider value={{
             loginHandel,
-            check
+            check,
             // // userLoginLoading,
-            // // userInfo,
+            userInfo,
             // // loginError,
             // splashLoading,
             // addCartHandler,
@@ -136,7 +158,7 @@ export const AuthProvider = ({ children }) => {
             // setBucketItem,
             // cartRemove,
             // isLoggedIn,
-            // logOut,
+            logOut,
          
 
            

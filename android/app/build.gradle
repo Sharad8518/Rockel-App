@@ -228,6 +228,7 @@ dexOptions {
         }
     }
     signingConfigs {
+
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'

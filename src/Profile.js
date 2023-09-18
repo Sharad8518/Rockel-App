@@ -1,9 +1,10 @@
 import {Text,View,StatusBar,TouchableOpacity} from "react-native"
-import React from "react"
+import React, { useContext } from "react"
 import Feather from 'react-native-vector-icons/Feather';
+import { AuthContext } from "./context/AuthContext";
 
 export default function Profile({navigation}){
-    
+ const{logOut} =  useContext(AuthContext)
     return(
         <View style={{backgroundColor:"#fff",height:"100%"}}>
            <View style={{backgroundColor:"#3498DB",height:200,borderBottomLeftRadius:30,borderBottomRightRadius:30}}>
@@ -52,13 +53,12 @@ export default function Profile({navigation}){
     <Text style={{fontFamily:"Poppins-Light",color:"#000",marginLeft:5}}> xyz</Text>
   </View>
 <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+  <TouchableOpacity onPress={()=>logOut()}>
   <View style={{width:120,justifyContent:"center",alignItems:"center",backgroundColor:"#E74C3C",height:40,marginTop:20,borderRadius:10}}>
             <Text style={{fontFamily:"Poppins-SemiBold",color:"#fff"}}>Log Out</Text>
         </View>
+        </TouchableOpacity>
         </View>
-
-
-
 
   <View style={{position:"absolute",bottom:0}}>
     <View style={{width:"100%"}}>
