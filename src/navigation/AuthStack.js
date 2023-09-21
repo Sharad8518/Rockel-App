@@ -19,6 +19,9 @@ import FreetownHome from '../Freetown/FreetownHome'
 import FreetownInvoice from '../Freetown/FreetownInvoice'
 import InvoiceDetail from '../InvoiceDetail'
 import EditCustomer from '../EditCustomer'
+import AddBooking from '../AddBooking'
+import PendingBooking from '../PendingBooking'
+import AddCollectionBoy from '../AddCollectionBoy'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQuery } from '@apollo/client'
 import { QUERY_GET_USER_BY_ID } from '../Graphql/Query'
@@ -68,6 +71,11 @@ export default function AuthStack() {
           <Stack.Screen name="Successfull" component={Successfull} /> 
           <Stack.Screen name="AddCustomer" component={AddCustomer} /> 
           <Stack.Screen name="AddInvoice" component={AddInvoice} /> 
+          <Stack.Screen name="AddBooking" component={AddBooking} />
+          <Stack.Screen name="PendingBooking" component={PendingBooking} />
+          <Stack.Screen name="AddCollectionBoy" component={AddCollectionBoy} />
+
+
          
          
           <Stack.Screen name="FreetownInvoice" component={FreetownInvoice} />

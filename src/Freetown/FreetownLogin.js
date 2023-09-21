@@ -1,9 +1,15 @@
-import { View, Text,Image, TextInput, StatusBar, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text,Image, TextInput, StatusBar, TouchableOpacity, ScrollView,ActivityIndicator } from 'react-native'
+import React,{useState} from 'react'
 import logo from "../../assets/Image/mobile.png"
 import Feather from 'react-native-vector-icons/Feather';
 import { Checkbox,Card } from 'react-native-paper';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 export default function FreetownLogin({navigation}) {
+
+   const{loginHandel,userLoading,loginError} = useContext(AuthContext)
+   const[username,setUserName] =useState("")
+   const[password,setPassword] =useState("")
   return (
     <View style={{ backgroundColor: "#fff", height: "100%" }}>
     <ScrollView>
@@ -18,11 +24,11 @@ export default function FreetownLogin({navigation}) {
 <View style={{ flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: 20 }}>
 
   <Card style={{width:"80%",marginTop:5,height:50,elevation:5,borderRadius:10}}>
-    <TextInput placeholder='Username' style={{marginLeft:5,color:"#000"}}  placeholderTextColor="#95A5A6"/>
+    <TextInput placeholder='Username' style={{marginLeft:5,color:"#000"}}  placeholderTextColor="#95A5A6"  onChangeText={(e)=>setUserName(e)}/>
   </Card>
   
   <Card style={{width:"80%",marginTop:15,height:50,elevation:5,borderRadius:10}}>
-    <TextInput placeholder='Password' style={{marginLeft:5,color:"#000"}}  placeholderTextColor="#95A5A6"/>
+    <TextInput placeholder='Password' style={{marginLeft:5,color:"#000"}}  placeholderTextColor="#95A5A6" onChangeText={(e)=>setPassword(e)}/>
   </Card>
 
 
@@ -30,15 +36,41 @@ export default function FreetownLogin({navigation}) {
 <View style={{ flexDirection: "row",justifyContent:"center",alignItems:"center" }}>
  
 </View>
-<View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+
+{
+   userLoading ?
+   <>
+   <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+   <ActivityIndicator size="large" color="#000" />
+   </View>
+   
+   </>
+   :
+   <>
+   <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
   <View style={{ width: "40%", backgroundColor: "#3498DB", flexDirection: "column", alignItems: "center", justifyContent: "center", height: 45, marginTop: 30, borderRadius: 10 }}>
-    <TouchableOpacity onPress={()=>navigation.navigate("FreetownHome")}>
+    <TouchableOpacity onPress={()=>loginHandel(username,password)}>
     <View style={{width:"50%", backgroundColor: "#3498DB", flexDirection: "column", alignItems: "center", justifyContent: "center", borderRadius: 50}}>
     <Text style={{ color: "#fff",fontFamily:"Poppins-SemiBold" }}>Login</Text>
     </View>
     </TouchableOpacity>
   </View>
-</View>
+</View></>
+
+
+}
+
+{
+  loginError ?
+  <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+    <Text style={{color:"red",fontSize:12,fontFamily:"Poppins-SemiBold"}}>Username and Password Does Not Match!!! </Text>
+  </View>
+
+  :
+   <></>
+
+}
+
 
 <View style={{flexDirection:"row",justifyContent:"center",alignItems:"center",marginTop:12}}>
   <TouchableOpacity onPress={()=>navigation.navigate("SignUp")}>

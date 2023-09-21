@@ -48,3 +48,21 @@ mutation Mutation($userName: String, $password: String) {
 }
 
 `
+
+export const MUTATION_ADD_BOOKING = gql`
+mutation CreateBooking($bookingInput: bookingInput) {
+  createBooking(BookingInput: $bookingInput) {
+    id
+   
+  }
+}
+`
+
+export const MUTATION_UPDATE_BOOKING = gql`
+mutation Mutation($editBookingInput: editBookingInput) {
+  editBooking(EditBookingInput: $editBookingInput) {
+    id
+    
+  }
+}
+`

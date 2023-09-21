@@ -30,7 +30,7 @@ export default function Booking({navigation}) {
 <View style={{flexDirection:"row",justifyContent:"space-between",width:"95%"}}>
    <View style={{width:"50%",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:10,marginBottom:5}}>
    <Card style={{width:"80%" , height:120,flexDirection:"row",justifyContent:"center",alignItems:"center",elevation:5,borderRadius:10}}>
-       <TouchableOpacity onPress={()=>navigation.navigate("Booking")}>
+       <TouchableOpacity onPress={()=>navigation.navigate("AddBooking")}>
        <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",width:"100%"}}>
        <Image source={create}  />
        </View>
@@ -40,7 +40,7 @@ export default function Booking({navigation}) {
    </View>
    <View style={{width:"50%",justifyContent:"center",alignItems:"center",flexDirection:"column",marginRight:0,marginTop:10,marginBottom:5}}>
    <Card style={{width:"80%" ,height:120,flexDirection:"row",justifyContent:"center",alignItems:"center",elevation:5,borderRadius:10}}>
-   <TouchableOpacity onPress={()=>navigation.navigate("Customer")}>
+   <TouchableOpacity onPress={()=>navigation.navigate("PendingBooking")}>
    <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",width:"100%"}}>
    <Image source={pending}  />
    </View>

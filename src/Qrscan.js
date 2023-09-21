@@ -26,16 +26,16 @@ export default function Qrscan({ navigation }) {
   const [result, setResult] = useState('')
 
   const onSuccess = e => {
-    // Linking.openURL(e.data).catch(err =>
-    //   console.error('An error occured', err)
-    // );
+    Linking.openURL(e.data).catch(err =>
+      console.error('An error occured', err)
+    );
     console.log('e', e.data)
     setResult(e.data)
     showMessage({
       message: 'QR find successfully.',
       type: 'success',
     });
-    setGoNext(true);
+    // setGoNext(true);
   };
 
   const [torchCheck, setTorchCheck] = useState(false)
@@ -43,7 +43,7 @@ export default function Qrscan({ navigation }) {
   if (goNext) {
     navigation.navigate('Successfull', ({ result: result }));
   }
-  
+
   const animatedValue = useRef(new Animated.Value(0)).current;
   const [isTop, setIsTop] = useState(true);
 
@@ -67,7 +67,6 @@ export default function Qrscan({ navigation }) {
     outputRange: [0, Dimensions.get('window').height - 610],
     extrapolate: 'clamp'
   })
-
   return (
     <QRCodeScanner
       onRead={onSuccess}
@@ -138,10 +137,10 @@ export default function Qrscan({ navigation }) {
               </View>
             </View>
           </View>
-          <Animated.View style={[styles.square, { transform: [{ translateY }] }]}>
+          {/* <Animated.View style={[styles.square, { transform: [{ translateY }] }]}>
             <LinearGradient colors={['rgba(255, 148, 112, 0.3)', 'rgba(255, 148, 112, 0.0)',]} style={{ height: 70 }}  >
             </LinearGradient>
-          </Animated.View>
+          </Animated.View> */}
         </View>
       }
 

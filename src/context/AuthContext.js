@@ -16,39 +16,39 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 
-   
 
-     const [bucketItem, setBucketItem] = useState([])
-     const [vendorId,setVendorId] =useState()
-     const [vendorType,setVendorType] =useState()
-     const [venderName,setVendorName] =useState()
-     const [useDiscount,setUserDiscount]=useState()
 
-     const[check,setCheck] =useState("")
+    const [bucketItem, setBucketItem] = useState([])
+    const [vendorId, setVendorId] = useState()
+    const [vendorType, setVendorType] = useState()
+    const [venderName, setVendorName] = useState()
+    const [useDiscount, setUserDiscount] = useState()
 
-     
+    const [check, setCheck] = useState("")
 
-     const addCartHandler = (id, serviceName, servicePrice,vendorId,type,bhrapDiscount
-        ,venderName ) => {
-       setVendorId(vendorId)
-       setVendorName(venderName)
-      setUserDiscount(bhrapDiscount)
-       setVendorType(type)
+
+
+    const addCartHandler = (id, serviceName, servicePrice, vendorId, type, bhrapDiscount
+        , venderName) => {
+        setVendorId(vendorId)
+        setVendorName(venderName)
+        setUserDiscount(bhrapDiscount)
+        setVendorType(type)
         setBucketItem(bucketItem => [...bucketItem, {
-                serviceId: `${id}`,
-                serviceName: `${serviceName}`,
-                servicePrice: `${servicePrice}`,
-               
-            }]);
-        }
-      
-        const cartRemove = (itemId) => {
-            setBucketItem(current => current.filter(data => {
-                return data.serviceId !== itemId
-            }))
-        }
+            serviceId: `${id}`,
+            serviceName: `${serviceName}`,
+            servicePrice: `${servicePrice}`,
 
-     
+        }]);
+    }
+
+    const cartRemove = (itemId) => {
+        setBucketItem(current => current.filter(data => {
+            return data.serviceId !== itemId
+        }))
+    }
+
+
     const [loginError, setLoginError] = useState(false);
     const [userInfo, setUserInfo] = useState();
     const [emptyError, setEmptyError] = useState(false);
@@ -56,25 +56,30 @@ export const AuthProvider = ({ children }) => {
     const [breakIf, setBreakIf] = useState(true)
 
     const [splashLoading, setSplashLoading] = useState(false)
-    const[londonStattLogin,{data:userData}] = useMutation(MUTATION_LOGIN_LONDON)
+    const [londonStattLogin, { data: userData, loading: userLoading }] = useMutation(MUTATION_LOGIN_LONDON, {
+        onError(error) {
+            console.log(error)
+            setLoginError(true)
+        }
+    })
 
-    console.log("userData",userData)
+    console.log("userData", userData)
 
-    const loginHandel = async (username,password) => {
+    const loginHandel = async (username, password) => {
         Keyboard.dismiss();
-        if(username === "" || password === ""){
-       alert("Username & Password Empty")
-        }else{
+        if (username === "" || password === "") {
+            alert("Username & Password Empty")
+        } else {
             londonStattLogin({
-            variables:{
-                "userName": `${username}`,
-                "password": `${password}`
-            }
+                variables: {
+                    "userName": `${username}`,
+                    "password": `${password}`
+                }
 
             })
         }
-        
-       
+
+
 
 
         // if (parseInt(InputOTP) === parseInt(getOtp)) {
@@ -91,10 +96,10 @@ export const AuthProvider = ({ children }) => {
         //         message: "OTP not matched!!!",
         //         type: "danger",
         //     });
-          
+
         // }
 
-        
+
 
 
 
@@ -125,7 +130,7 @@ export const AuthProvider = ({ children }) => {
         isLoggedIn();
     }, [])
 
-  
+
 
     // console.log("Token", userData)
     // console.log("setToken", userInfo)
@@ -138,7 +143,7 @@ export const AuthProvider = ({ children }) => {
         await AsyncStorage.removeItem('userId');
     }
 
-    
+
 
     return (
         <AuthContext.Provider value={{
@@ -146,7 +151,8 @@ export const AuthProvider = ({ children }) => {
             check,
             // // userLoginLoading,
             userInfo,
-            // // loginError,
+            userLoading,
+            loginError,
             // splashLoading,
             // addCartHandler,
             // bucketItem,
@@ -159,10 +165,10 @@ export const AuthProvider = ({ children }) => {
             // cartRemove,
             // isLoggedIn,
             logOut,
-         
 
-           
-          
+
+
+
 
         }}>
             {children}
