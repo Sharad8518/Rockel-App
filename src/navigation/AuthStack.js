@@ -22,9 +22,19 @@ import EditCustomer from '../EditCustomer'
 import AddBooking from '../AddBooking'
 import PendingBooking from '../PendingBooking'
 import AddCollectionBoy from '../AddCollectionBoy'
+import SplashScreen from '../SplashScreen'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQuery } from '@apollo/client'
+import AddFreetownBoy from '../Freetown/AddFreetownBoy'
+import Freetown from '../Freetown'
+import Deliverd from '../Deliverd'
+import OnWayBooking from '../OnWayBooking'
+import PickUpBooking from '../PickUpBooking' 
+import Warehouse from '../Warehouse'
+import Container from '../Container'
+
 import { QUERY_GET_USER_BY_ID } from '../Graphql/Query'
+
 
 
 const Stack =  createNativeStackNavigator();
@@ -52,16 +62,28 @@ export default function AuthStack() {
           userInfo ?
           <>
           {
+             loading  || data && data.getLondonById === null?
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+
+             :
+            <>
+             {
+              data && data.getLondonById.role  === "WareHouse_London" ?
             
-            data && data.getLondonById.role  === "WareHouse_London" ?
-            <>
-            <Stack.Screen name="Home" component={Home} /> 
-            </>
-            :
-            <>
-            <Stack.Screen name="FreetownHome" component={FreetownHome} />
-            </>
+              <Stack.Screen name="Home" component={Home} /> 
+            
+              :
+               data && data.getLondonById.role  === "Freetown_London" ?
+              <Stack.Screen name="FreetownHome" component={FreetownHome} />
+             
+              :
+              <></>
+            }
+         </>
           }
+   
+
+     
           <Stack.Screen name="Invoice" component={Invoice} /> 
           <Stack.Screen name="Payment" component={Payment} /> 
           <Stack.Screen name="Customer" component={Customer} /> 
@@ -74,13 +96,18 @@ export default function AuthStack() {
           <Stack.Screen name="AddBooking" component={AddBooking} />
           <Stack.Screen name="PendingBooking" component={PendingBooking} />
           <Stack.Screen name="AddCollectionBoy" component={AddCollectionBoy} />
-
-
+          <Stack.Screen name="Freetown" component={Freetown} />
+          <Stack.Screen name="Deliverd" component={Deliverd} />
+          <Stack.Screen name="OnWayBooking" component={OnWayBooking} />
+          <Stack.Screen name="PickUpBooking" component={PickUpBooking} />
+          <Stack.Screen name="Warehouse" component={Warehouse} />
+          <Stack.Screen name="Container" component={Container} />
          
-         
+    
           <Stack.Screen name="FreetownInvoice" component={FreetownInvoice} />
           <Stack.Screen name="InvoiceDetail" component={InvoiceDetail} />
           <Stack.Screen name="EditCustomer" component={EditCustomer} />
+          <Stack.Screen name="AddFreetownBoy" component={AddFreetownBoy} />
           </>
           :
           <>

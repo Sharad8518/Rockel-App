@@ -73,13 +73,11 @@ export default function AddBooking({ navigation }) {
         message: "Booking Add Successfully",
         type: "success",
       });
-      navigation.navigate("Customer")
+      navigation.navigate("PendingBooking")
     }
 
     }
     
-
-
 
 
     return (

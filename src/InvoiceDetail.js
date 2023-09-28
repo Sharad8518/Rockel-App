@@ -71,7 +71,7 @@ export default function InvoiceDetail({ navigation, route }) {
                             </View>
                             <View style={{ width: "40%" }}>
                                 <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 10, marginTop: 7, fontFamily: "Poppins-SemiBold" }}><Moment element={Text} format='DD MMM YYYY'>{data && data.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{data && data.createdDateTime}</Moment> </Text>
-                                <Text style={{ fontSize: 11, marginLeft: 10, fontFamily: "Poppins-SemiBold", color: "#F1C40F" }}>Wait For Pickup</Text>
+                                <Text style={{ fontSize: 11, marginLeft: 10, fontFamily: "Poppins-SemiBold", color: "#F1C40F" }}>{data && data.status}</Text>
                                 <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 8, marginTop: 0, fontFamily: "Poppins-Medium" }}><Moment element={Text} format='DD MMM YYYY'>{data && data.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{data && data.createdDateTime}</Moment> </Text>
 
                             </View>
@@ -156,6 +156,14 @@ export default function InvoiceDetail({ navigation, route }) {
 
 
                         }
+                        
+                        {
+                         data && data.status === "Delivered" ?
+                         <Image source={{ uri: `https://byaahlagan-profile-image.s3.us-east-2.amazonaws.com/${data && data.imgQR}` }} style={{ width: 120, height: 120, marginBottom: 10, marginLeft: 10 }} />
+                         :
+                        <></>
+                        }
+
 
 
                     </Card>

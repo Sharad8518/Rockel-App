@@ -3,15 +3,17 @@ import React, { useState } from 'react'
 import Feather from 'react-native-vector-icons/Feather';
 import { Card } from 'react-native-paper';
 import { useQuery } from '@apollo/client';
-import { QUERY_GET_ALL_INVOICE } from '../Graphql/Query';
+import { QUERY_GET_ALL_INVOICE, QUERY_GET_FREETOWN_INVOICE } from '../Graphql/Query';
 import Moment from 'react-moment';
 
 export default function FreetownInvoice({ navigation }) {
 
-    const { data, loading } = useQuery(QUERY_GET_ALL_INVOICE)
+    const { data, loading } = useQuery(QUERY_GET_FREETOWN_INVOICE)
     console.log("data", data)
 
     const [search, setSearch] = useState("")
+
+
 
 
     return (
@@ -41,91 +43,153 @@ export default function FreetownInvoice({ navigation }) {
                 </View>
                 <View style={{ flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
-                   {
-                      search === "" ?
-                     <>
-                      {
-                          data && data.getAllInvoice.slice().reverse().map(item => {
-                              return (
-                                  <Card style={{ width: "90%", height: 100, marginTop: 10, marginBottom: 10, elevation: 5, borderRadius: 10 }}>
-                                      <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
-                                          <View style={{ width: "50%" }}>
-                                              <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 12, marginTop: 7, fontFamily: "Poppins-SemiBold" }}>#{item.invoiceNumber}</Text>
-                                              <View style={{ flexDirection: "row", marginLeft: 10 }}>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Recipient : </Text>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.recipientName} </Text>
-                                              </View>
-                                              <View style={{ flexDirection: "row", marginLeft: 10 }}>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Email : </Text>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.email} </Text>
-                                              </View>
-                                              <View style={{ flexDirection: "row", marginLeft: 10 }}>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Phone : </Text>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.phoneOne} </Text>
-                                              </View>
-  
-                                          </View>
-                                          <View style={{ width: "50%" }}>
-                                              <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 11, marginTop: 7, fontFamily: "Poppins-SemiBold" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment> </Text>
-                                              <Text style={{ fontSize: 11, marginLeft: 10, fontFamily: "Poppins-SemiBold", color: "#F1C40F" }}>{item.status}</Text>
-                                              <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 8, marginTop: 0, fontFamily: "Poppins-Medium" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment></Text>
-                                              <View style={{ flexDirection: "column", width: "60%", justifyContent: "center", alignItems: "center", backgroundColor: "#1ABC9C", marginLeft: 10, height: 25, borderRadius: 50, marginTop: 1 }}>
-                                                  <TouchableOpacity onPress={() => navigation.navigate("InvoiceDetail", { data: item })}>
-                                                      <View style={{ width: "70%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-                                                          <Text style={{ color: "#fff", fontSize: 12 }}>View Detail</Text>
-                                                      </View>
-                                                  </TouchableOpacity>
-                                              </View>
-                                          </View>
-                                      </View>
-                                  </Card>
-                              )
-                          })
-                      }
-                      </>
-                      :
-                      <>
-                        {
-                          data && data.getAllInvoice.filter((obj)=>obj.invoiceNumber.includes(search)).slice().reverse().map(item => {
-                              return (
-                                  <Card style={{ width: "90%", height: 100, marginTop: 10, marginBottom: 10, elevation: 5, borderRadius: 10 }}>
-                                      <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
-                                          <View style={{ width: "50%" }}>
-                                              <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 12, marginTop: 7, fontFamily: "Poppins-SemiBold" }}>#{item.invoiceNumber}</Text>
-                                              <View style={{ flexDirection: "row", marginLeft: 10 }}>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Recipient : </Text>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.recipientName} </Text>
-                                              </View>
-                                              <View style={{ flexDirection: "row", marginLeft: 10 }}>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Email : </Text>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.email} </Text>
-                                              </View>
-                                              <View style={{ flexDirection: "row", marginLeft: 10 }}>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Phone : </Text>
-                                                  <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.phoneOne} </Text>
-                                              </View>
-  
-                                          </View>
-                                          <View style={{ width: "50%" }}>
-                                              <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 11, marginTop: 7, fontFamily: "Poppins-SemiBold" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment> </Text>
-                                              <Text style={{ fontSize: 11, marginLeft: 10, fontFamily: "Poppins-SemiBold", color: "#F1C40F" }}>{item.status}</Text>
-                                              <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 8, marginTop: 0, fontFamily: "Poppins-Medium" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment></Text>
-                                              <View style={{ flexDirection: "column", width: "60%", justifyContent: "center", alignItems: "center", backgroundColor: "#1ABC9C", marginLeft: 10, height: 25, borderRadius: 50, marginTop: 1 }}>
-                                                  <TouchableOpacity onPress={() => navigation.navigate("InvoiceDetail", { data: item })}>
-                                                      <View style={{ width: "70%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-                                                          <Text style={{ color: "#fff", fontSize: 12 }}>View Detail</Text>
-                                                      </View>
-                                                  </TouchableOpacity>
-                                              </View>
-                                          </View>
-                                      </View>
-                                  </Card>
-                              )
-                          })
-                      }
-                    
-                      </>
-                   }
+                    {
+                        search === "" ?
+                            <>
+                                {
+                                    data && data.getInvoiceFreetown.slice().reverse().map(item => {
+                                        return (
+                                            <Card style={{ width: "90%", height: 150, marginTop: 10, marginBottom: 10, elevation: 5, borderRadius: 10 }}>
+                                                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
+                                                    <View style={{ width: "50%" }}>
+                                                        <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 12, marginTop: 7, fontFamily: "Poppins-SemiBold" }}>#{item.invoiceNumber}</Text>
+                                                        <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Recipient : </Text>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.recipientName} </Text>
+                                                        </View>
+                                                        <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Email : </Text>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.email} </Text>
+                                                        </View>
+                                                        <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Phone : </Text>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.phoneOne} </Text>
+                                                        </View>
+
+                                                    </View>
+                                                    <View style={{ width: "50%" }}>
+                                                        <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 11, marginTop: 7, fontFamily: "Poppins-SemiBold" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment> </Text>
+                                                        <Text style={{ fontSize: 11, marginLeft: 10, fontFamily: "Poppins-SemiBold", color: "#F1C40F" }}>Freetown</Text>
+                                                        <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 8, marginTop: 0, fontFamily: "Poppins-Medium" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment></Text>
+                                                        <View style={{ flexDirection: "column", width: "60%", justifyContent: "center", alignItems: "center", backgroundColor: "#1ABC9C", marginLeft: 10, height: 25, borderRadius: 50, marginTop: 1 }}>
+                                                            <TouchableOpacity onPress={() => navigation.navigate("InvoiceDetail", { data: item })}>
+                                                                <View style={{ width: "70%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                                                                    <Text style={{ color: "#fff", fontSize: 12 }}>View Detail</Text>
+                                                                </View>
+                                                            </TouchableOpacity>
+                                                        </View>
+                                                    </View>
+                                                </View>
+
+                                                {
+
+                                                    item.collectionBoyFreetownId === null ?
+                                                        <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: 20 }}>
+                                                            <View style={{ width: "90%", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "#3498DB", height: 30, borderRadius: 20 }}>
+                                                                <TouchableOpacity onPress={()=>navigation.navigate("AddFreetownBoy",{invoiceId:item.id})}>
+                                                                <View style={{ width: "100%", flexDirection: "column", alignItems: "center", justifyContent: "center", }}>
+                                                                <View style={{ width: "100%", flexDirection: "column", alignItems: "center", justifyContent: "center", }}>
+                                                                    <Text style={{ color: "#fff", fontSize: 11, fontFamily: "Poppins-SemiBold" }}>Add Delivery Boy</Text>
+                                                                    </View>
+                                                                </View>
+                                                                </TouchableOpacity>
+                                                            </View>
+
+                                                        </View>
+
+                                                        :
+                                                        <View style={{ marginTop: 8 }}>
+                                                            <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Delivery Boy Name : </Text>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.email} </Text>
+                                                            </View>
+                                                            <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Delivery Boy Id : </Text>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.phoneOne} </Text>
+                                                            </View>
+                                                        </View>
+
+
+                                                }
+
+
+
+
+                                            </Card>
+                                        )
+                                    })
+                                }
+                            </>
+                            :
+                            <>
+                                {
+                                    data && data.getAllInvoice.filter((obj) => obj.invoiceNumber.includes(search)).slice().reverse().map(item => {
+                                        return (
+                                            <Card style={{ width: "90%", height: 150, marginTop: 10, marginBottom: 10, elevation: 5, borderRadius: 10 }}>
+                                                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
+                                                    <View style={{ width: "50%" }}>
+                                                        <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 12, marginTop: 7, fontFamily: "Poppins-SemiBold" }}>#{item.invoiceNumber}</Text>
+                                                        <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Recipient : </Text>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.recipientName} </Text>
+                                                        </View>
+                                                        <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Email : </Text>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.email} </Text>
+                                                        </View>
+                                                        <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Phone : </Text>
+                                                            <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.phoneOne} </Text>
+                                                        </View>
+
+                                                    </View>
+                                                    <View style={{ width: "50%" }}>
+                                                        <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 11, marginTop: 7, fontFamily: "Poppins-SemiBold" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment> </Text>
+                                                        <Text style={{ fontSize: 11, marginLeft: 10, fontFamily: "Poppins-SemiBold", color: "#F1C40F" }}>Freetown</Text>
+                                                        <Text style={{ marginLeft: 10, color: "#34495E", fontSize: 8, marginTop: 0, fontFamily: "Poppins-Medium" }}><Moment element={Text} format='DD MMM YYYY'>{item.createdDateTime}</Moment> , <Moment element={Text} format='hh:mm A'>{item.createdDateTime}</Moment></Text>
+                                                        <View style={{ flexDirection: "column", width: "60%", justifyContent: "center", alignItems: "center", backgroundColor: "#1ABC9C", marginLeft: 10, height: 25, borderRadius: 50, marginTop: 1 }}>
+                                                            <TouchableOpacity onPress={() => navigation.navigate("InvoiceDetail", { data: item })}>
+                                                                <View style={{ width: "70%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                                                                    <Text style={{ color: "#fff", fontSize: 12 }}>View Detail</Text>
+                                                                </View>
+                                                            </TouchableOpacity>
+                                                        </View>
+                                                    </View>
+                                                </View>
+
+                                                {
+
+                                                    item.collectionBoyFreetownId === null ?
+                                                        <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: 20 }}>
+                                                            <View style={{ width: "90%", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "#3498DB", height: 30, borderRadius: 20 }}>
+                                                                <View style={{ width: "100%", flexDirection: "column", alignItems: "center", justifyContent: "center", }}>
+                                                                    <Text style={{ color: "#fff", fontSize: 11, fontFamily: "Poppins-SemiBold" }}>Add Delivery Boy</Text>
+                                                                </View>
+                                                            </View>
+
+                                                        </View>
+
+                                                        :
+                                                        <View style={{ marginTop: 8 }}>
+                                                            <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Delivery Boy Name : </Text>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.email} </Text>
+                                                            </View>
+                                                            <View style={{ flexDirection: "row", marginLeft: 10 }}>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Delivery Boy Id : </Text>
+                                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.phoneOne} </Text>
+                                                            </View>
+                                                        </View>
+
+
+                                                }
+                                            </Card>
+                                        )
+                                    })
+                                }
+
+                            </>
+                    }
                 </View>
             </ScrollView>
         </View>

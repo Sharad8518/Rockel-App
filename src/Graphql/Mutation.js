@@ -46,7 +46,6 @@ mutation Mutation($userName: String, $password: String) {
     londonToken
   }
 }
-
 `
 
 export const MUTATION_ADD_BOOKING = gql`
@@ -65,4 +64,14 @@ mutation Mutation($editBookingInput: editBookingInput) {
     
   }
 }
+`
+
+export const MUTATION_EDIT_INVOICE = gql`
+mutation EditInvoice($editInvoiceInput: editInvoiceInput) {
+  editInvoice(EditInvoiceInput: $editInvoiceInput) {
+    id
+  
+  }
+}
+
 `

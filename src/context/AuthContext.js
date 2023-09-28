@@ -66,6 +66,10 @@ export const AuthProvider = ({ children }) => {
     console.log("userData", userData)
 
     const loginHandel = async (username, password) => {
+
+     
+        console.log("username",username)
+        console.log("password",password)
         Keyboard.dismiss();
         if (username === "" || password === "") {
             alert("Username & Password Empty")
@@ -75,7 +79,7 @@ export const AuthProvider = ({ children }) => {
                     "userName": `${username}`,
                     "password": `${password}`
                 }
-
+    
             })
         }
 

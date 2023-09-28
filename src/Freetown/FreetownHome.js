@@ -9,6 +9,8 @@ import invoice from "../../assets/Image/invoice.png"
 import money from "../../assets/Image/money.png"
 import scan from "../../assets/Image/scan.png"
 import setting from "../../assets/Image/setting.png"
+import delivered from "../../assets/Image/delivered.png"
+import way from "../../assets/Image/way.png"
 
 
 export default function FreetownHome({navigation}) {
@@ -59,6 +61,33 @@ export default function FreetownHome({navigation}) {
         <Text style={{marginTop:10,fontFamily:"Poppins-SemiBold",color:"#000"}}>QR Scan</Text>
         </View>
      </View>
+
+
+     <View style={{flexDirection:"row",justifyContent:"space-between",width:"95%"}}>
+     <View style={{width:"50%",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:10,marginBottom:5}}>
+        <Card style={{width:"80%" , height:120,flexDirection:"row",justifyContent:"center",alignItems:"center",elevation:5,borderRadius:10}}>
+        <TouchableOpacity onPress={()=>navigation.navigate("OnWayBooking")}>
+            <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",width:"100%"}}>
+            <Image source={way}  />
+            </View>
+            </TouchableOpacity>
+        </Card>
+        <Text style={{marginTop:10,fontFamily:"Poppins-SemiBold",color:"#000"}}>On Way</Text>
+        </View>
+        <View style={{width:"50%",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:10,marginBottom:5}}>
+        <Card style={{width:"80%" , height:120,flexDirection:"row",justifyContent:"center",alignItems:"center",elevation:5,borderRadius:10}}>
+            <TouchableOpacity onPress={()=>navigation.navigate("Deliverd")}>
+            <View style={{flexDirection:"column",alignItems:"center",justifyContent:"center",width:"100%"}}>
+            <Image source={delivered}  style={{width:80,height:80}} />
+            </View>
+            </TouchableOpacity>
+        </Card>
+        <Text style={{marginTop:10,fontFamily:"Poppins-SemiBold",color:"#000"}}>Delievered</Text>
+        </View>
+     </View>
+
+
+
 
    
      <View style={{flexDirection:"row",justifyContent:"space-between",width:"95%"}}>

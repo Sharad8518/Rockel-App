@@ -100,13 +100,11 @@ export default function PendingBooking({ navigation }) {
                                             </View>
                                             <View style={{ flexDirection: "row", marginLeft: 10, width: "90%", }}>
                                                 <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#2980B9" }}>Collection Name : </Text>
-                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.collectionBoyuniqueId}</Text>
+                                                <Text style={{ fontSize: 11, fontFamily: "Poppins-SemiBold", color: "#34495E" }}>{item.collectionName}</Text>
                                             </View>
 
                                        </View>
                                        </>
-
-
                                     }
                                    
                                 </Card>

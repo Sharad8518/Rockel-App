@@ -35,7 +35,7 @@ export default function Qrscan({ navigation }) {
       message: 'QR find successfully.',
       type: 'success',
     });
-    // setGoNext(true);
+    setGoNext(true);
   };
 
   const [torchCheck, setTorchCheck] = useState(false)
